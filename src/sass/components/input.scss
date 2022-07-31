@@ -1,0 +1,60 @@
+.input__text {
+  border-radius: 0.3125rem;
+  border: 0;
+  caret-color: $color-primary;
+  font-size: 1.125rem;
+  height: 3.7rem;
+  min-width: 100%;
+  padding-inline: 1rem;
+
+  @include themed() {
+    background-color: t('bgTodoContainer');
+    box-shadow: t('shadow');
+    color: t('fcRegular');
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button-transparent {
+  aspect-ratio: 1;
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+}
+
+.button-active {
+  background-image: $primary-gradient;
+}
+
+.border-wrap {
+  background: transparent;
+  border-radius: 50%;
+  display: inline-grid;
+  padding: 1px;
+  place-items: center;
+
+  &:hover {
+    background: $primary-gradient;
+  }
+  &:hover > button:not(.button-active) {
+    background: $color-blue-2;
+    border: none !important;
+
+    @include themed() {
+      background: t('bgTodoContainer');
+    }
+  }
+}
+
+.button__rectangle-transparent {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-inline: 0;
+}

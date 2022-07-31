@@ -1,0 +1,9 @@
+.header-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.header-title > .button-transparent:hover {
+  background-image: $primary-gradient;
+}

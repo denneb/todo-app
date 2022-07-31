@@ -1,0 +1,49 @@
+$themes: (
+  light: (
+    bg: $color-gray-1,
+    bgImage: $img-light-desktop,
+    bgImageMobile: $img-light-mobile,
+    bgTodoContainer: $color-white,
+    borderColor: $color-gray-2,
+    shadow: $shadow,
+    fcRegular: $color-gray-5,
+    fcActive: $color-gray-5,
+    fcSelected: $color-primary,
+    fcInactive: $color-gray-4,
+  ),
+  dark: (
+    bg: $color-blue-1,
+    bgImage: $img-dark-desktop,
+    bgImageMobile: $img-dark-mobile,
+    bgTodoContainer: $color-blue-2,
+    borderColor: $color-blue-6,
+    shadow: $shadow,
+    fcRegular: $color-blue-3,
+    fcActive: $color-blue-4,
+    fcSelected: $color-primary,
+    fcInactive: $color-blue-5,
+  ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme__#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}
