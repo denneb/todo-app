@@ -35,10 +35,10 @@ export const TodoProvider: FC<Props> = ({ children }) => {
 
   const addTodo = (todoItem: todo) => {
     console.log('addtodo');
-    /* const newList = [...state.todos, todoItem];
-    console.log('object');
+    const newList = [...state.todos, todoItem];
+
     saveItem('todoList', newList);
-    dispatch({ type: '[todo] - Add todo', payload: { ...todoItem } });*/
+    dispatch({ type: '[todo] - Add todo', payload: { ...todoItem } });
   };
 
   const deleteTodo = (id: string) => {

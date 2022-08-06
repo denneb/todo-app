@@ -8,8 +8,9 @@ function TodoApp() {
     <MainLayout>
       <main className='todo-container'>
         <Header />
-        <InputText />
+
         <TodoProvider>
+          <InputText />
           <TodoList />
         </TodoProvider>
       </main>

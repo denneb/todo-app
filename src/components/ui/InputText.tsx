@@ -1,21 +1,14 @@
-import {
-  ChangeEvent,
-  FormEventHandler,
-  KeyboardEventHandler,
-  useContext,
-  useState,
-} from 'react';
+import { ChangeEvent, FC, useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { todo } from '../../interfaces/todo';
 import { TodoContext } from '../../context/todo';
-import { saveItem } from '../../helpers/localStorage';
 
-export const InputText = () => {
+export const InputText: FC = () => {
   const { todos, addTodo } = useContext(TodoContext);
   const [inputValue, setInputValue] = useState('');
 
-  const onTextFieldChanged = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
@@ -26,20 +19,21 @@ export const InputText = () => {
       description: inputValue,
       isCompleted: false,
     };
-
+    addTodo(item);
     setInputValue('');
   };
 
   return (
-    <form className='form__container' onSubmit={submit}>
-      <button className={`button-transparent`}></button>
-      <input
-        type={'text'}
-        value={inputValue}
-        onChange={onTextFieldChanged}
-        className='input__text'
-        placeholder='Add todo...'
-      />
-    </form>
+    <div className='form__container'>
+      <form onSubmit={submit}>
+        <button className={`button-transparent`}></button>
+        <input
+          className='input__text'
+          value={inputValue}
+          onChange={handleChange}
+          placeholder='Add todo...'
+        />
+      </form>
+    </div>
   );
 };

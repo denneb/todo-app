@@ -10,7 +10,12 @@ interface Props {
 
 export const TodoRow: FC<Props> = ({ todoItem }) => {
   const [hover, setHover] = useState<boolean>(false);
-  const { todos: todoList, deleteTodo, completeTodo } = useContext(TodoContext);
+  const {
+    todos: todoList,
+    deleteTodo,
+    completeTodo,
+    addTodo,
+  } = useContext(TodoContext);
 
   return (
     <div
