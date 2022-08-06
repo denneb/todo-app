@@ -8,7 +8,7 @@ interface Props {
 export const MainLayout: FC<Props> = ({ children }) => {
   const { theme } = useContext(UIContext);
   return (
-    <div className={`base theme__${theme}`}>
+    <div className={`base ${theme ? 'theme__' + theme : 'theme__dark'}`}>
       <div className='main-layout'>
         <div className='header'></div>
         {children}

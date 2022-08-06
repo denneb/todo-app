@@ -61,8 +61,10 @@ export const todoReducer = (
     case '[todo] - Refresh todos':
       return {
         ...state,
-        todos: [...action.payload],
-        count: action.payload.filter((todo) => !todo.isCompleted).length,
+        todos: action.payload && [...action.payload],
+        count:
+          action.payload &&
+          action.payload.filter((todo) => !todo.isCompleted).length,
       };
     default:
       return state;
