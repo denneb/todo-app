@@ -1,6 +1,6 @@
 # Frontend Mentor - Todo app solution
 
-This is a solution to the [Space tourism website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3).
+This is a solution to the [Todo app](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW).
 
 ## Overview
 
@@ -20,7 +20,7 @@ Users should be able to:
 
 ### Links
 
-- [Live site]()
+- Live site
 
 ## Available Scripts
 

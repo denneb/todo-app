@@ -1,6 +1,7 @@
 import { MainLayout } from './components/layout/MainLayout';
 import { TodoList } from './components/todo';
 import { Footer, Header, InputText } from './components/ui';
+import { TodoProvider } from './context/todo';
 
 function TodoApp() {
   return (
@@ -8,7 +9,9 @@ function TodoApp() {
       <main className='todo-container'>
         <Header />
         <InputText />
-        <TodoList />
+        <TodoProvider>
+          <TodoList />
+        </TodoProvider>
       </main>
       <Footer />
     </MainLayout>

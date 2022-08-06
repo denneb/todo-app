@@ -1,16 +1,27 @@
-import { FC } from 'react';
-import checkButton from '../../assets/images/icon-check.svg';
+import { FC, useContext, useEffect, useState } from 'react';
+
 import { TodoRow, InfoBar } from './';
 
-export const TodoList: FC = () => {
-  return (
-    <div className='todo__list '>
-      <TodoRow />
-      <TodoRow />
-      <TodoRow />
-      <TodoRow />
+import { TodoContext } from '../../context/todo';
 
-      <InfoBar />
-    </div>
+export const TodoList: FC = () => {
+  const { todos: todoList } = useContext(TodoContext);
+
+  return (
+    <>
+      <div className='todo__list '>
+        {todoList &&
+          todoList.length > 0 &&
+          todoList.map((item) => <TodoRow key={item.id} todoItem={item} />)}
+        <InfoBar />
+      </div>
+      <div className='todo__filter-mobile fc-active fw-700'>
+        <button className='fc-selected button__rectangle-transparent'>
+          All
+        </button>
+        <button className=' button__rectangle-transparent'>Active</button>
+        <button className='button__rectangle-transparent'>Completed</button>
+      </div>
+    </>
   );
 };

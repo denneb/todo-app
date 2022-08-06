@@ -16,8 +16,7 @@ $color-gray-4: hsl(236, 9%, 61%);
 $color-gray-5: hsl(235, 19%, 35%);
 $img-light-desktop: url('../../assets/images/bg-desktop-light.jpg');
 $img-light-mobile: url('../../assets/images/bg-mobile-light.jpg');
-
-$shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+$shadow-light: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
 
 //Dark theme
 $color-blue-1: hsl(235, 21%, 11%);
@@ -29,4 +28,4 @@ $color-blue-6: hsl(233, 14%, 35%);
 $color-blue-7: hsl(237, 14%, 26%);
 $img-dark-desktop: url('../../assets/images/bg-desktop-dark.jpg');
 $img-dark-mobile: url('../../assets/images/bg-mobile-dark.jpg');
-$shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+$shadow-dark: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);

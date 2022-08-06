@@ -1,11 +1,35 @@
 .input__text {
   border-radius: 0.3125rem;
-  border: 0;
+  //border: 1px solid white;
+  border: none;
   caret-color: $color-primary;
   font-size: 1.125rem;
   height: 3.7rem;
+  padding-inline: 1rem;
+  transition: color 0.6s ease-in-out, background-color 0.6s ease-in-out;
+  flex-grow: 1;
+
+  @include themed() {
+    background-color: t('bgTodoContainer');
+    color: t('fcRegular');
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form__container {
+  border-radius: 0.3125rem;
+  border: 0;
+  height: 3.7rem;
   min-width: 100%;
   padding-inline: 1rem;
+  transition: color 0.6s ease-in-out, background-color 0.6s ease-in-out,
+    box-shadow 0.6s ease-in-out;
+
+  display: flex;
+  align-items: center;
 
   @include themed() {
     background-color: t('bgTodoContainer');
@@ -16,12 +40,26 @@
   &:focus {
     outline: none;
   }
+
+  & button:hover {
+    @include themed() {
+      color: t('fcActive');
+    }
+  }
 }
 
 .button-transparent {
   aspect-ratio: 1;
   background-color: transparent;
   border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+}
+
+.button-invisible {
+  background-color: transparent;
   border: none;
   cursor: pointer;
   display: inline-grid;

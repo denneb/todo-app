@@ -1,14 +1,54 @@
+import { FC, useContext, useState } from 'react';
 import checkButton from '../../assets/images/icon-check.svg';
+import deleteButton from '../../assets/images/icon-cross.svg';
+import { TodoContext } from '../../context/todo';
+import { todo } from '../../interfaces/todo';
 
-export const TodoRow = () => {
+interface Props {
+  todoItem: todo;
+}
+
+export const TodoRow: FC<Props> = ({ todoItem }) => {
+  const [hover, setHover] = useState<boolean>(false);
+  const { todos: todoList, deleteTodo, completeTodo } = useContext(TodoContext);
+
   return (
-    <div className='todo__row fc-regular '>
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className={`todo__row ${
+        todoItem.isCompleted ? 'fc-inactive' : 'fc-regular'
+      }`}
+    >
       <div className='border-wrap'>
-        <button className='button-transparent button-active'>
-          <img src={checkButton} alt='Checked item' />
+        <button
+          onClick={() => {
+            completeTodo({ ...todoItem, isCompleted: !todoItem.isCompleted });
+          }}
+          className={`button-transparent ${
+            todoItem.isCompleted && 'button-active'
+          }`}
+        >
+          {todoItem.isCompleted && <img src={checkButton} alt='Checked item' />}
         </button>
       </div>
-      <div>Texto de prueba</div>
+      <div
+        className={`todo-description ${
+          todoItem.isCompleted ? 'line-through' : ''
+        }`}
+      >
+        {todoItem.description}
+      </div>
+      {hover && (
+        <button
+          onClick={() => {
+            deleteTodo(todoItem.id);
+          }}
+          className='button-invisible'
+        >
+          <img src={deleteButton} alt='Delete item' />
+        </button>
+      )}
     </div>
   );
 };
