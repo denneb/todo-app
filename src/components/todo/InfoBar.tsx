@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { TodoContext } from '../../context/todo';
 
 export const InfoBar = () => {
-  const { count } = useContext(TodoContext);
+  const { count, clearCompleted, show, filterTodos } = useContext(TodoContext);
 
   return (
     <>
@@ -11,13 +11,41 @@ export const InfoBar = () => {
           {count} items left
         </button>
         <div className='todo__filter fc-active fw-700'>
-          <button className='fc-selected button__rectangle-transparent'>
+          <button
+            onClick={() => {
+              filterTodos('all');
+            }}
+            className={`${
+              show === 'all' && 'fc-selected'
+            } button__rectangle-transparent`}
+          >
             All
           </button>
-          <button className=' button__rectangle-transparent'>Active</button>
-          <button className='button__rectangle-transparent'>Completed</button>
+          <button
+            onClick={() => {
+              filterTodos('active');
+            }}
+            className={`${
+              show === 'active' && 'fc-selected'
+            } button__rectangle-transparent`}
+          >
+            Active
+          </button>
+          <button
+            onClick={() => {
+              filterTodos('completed');
+            }}
+            className={`${
+              show === 'completed' && 'fc-selected'
+            } button__rectangle-transparent`}
+          >
+            Completed
+          </button>
         </div>
-        <button className=' fs-1 fw-400 button__rectangle-transparent'>
+        <button
+          onClick={clearCompleted}
+          className=' fs-1 fw-400 button__rectangle-transparent'
+        >
           Clear completed
         </button>
       </div>

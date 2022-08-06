@@ -1,5 +1,10 @@
 import { FC, useEffect, useReducer } from 'react';
-import { getItem, saveItem } from '../../helpers/localStorage';
+import {
+  getItem,
+  getString,
+  saveItem,
+  saveString,
+} from '../../helpers/localStorage';
 import { UIContext, uiReducer } from './';
 
 export interface UIState {
@@ -19,11 +24,11 @@ export const UIProvider: FC<Props> = ({ children }) => {
 
   const switchTheme = (theme: string) => {
     dispatch({ type: '[UI] - Switch theme', payload: theme });
-    saveItem('theme', theme);
+    saveString('theme', theme);
   };
 
   useEffect(() => {
-    const themeStored = getItem('theme', state.theme);
+    const themeStored = getString('theme', state.theme);
     dispatch({ type: '[UI] - Switch theme', payload: themeStored });
   }, []);
 
