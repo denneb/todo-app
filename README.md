@@ -20,7 +20,7 @@ Users should be able to:
 
 ### Links
 
-- Live site
+- [Live site](https://todo-app-five-rho.vercel.app/)
 
 ## Available Scripts
 
