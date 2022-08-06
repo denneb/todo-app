@@ -2,9 +2,8 @@ let localStorageResult: any;
 
 export const saveItem = (name: string, item: any) => {
   try {
-    console.log(item);
-    const stringifiedItem = JSON.stringify(item);
-    console.log(JSON.stringify(item));
+    const stringifiedItem = JSON.stringify([...item]);
+
     localStorage.setItem(name, stringifiedItem);
   } catch (error) {
     console.log(error);

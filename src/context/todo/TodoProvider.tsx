@@ -22,7 +22,7 @@ export const TodoProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(todoReducer, TODO_INITIAL_STATE);
 
   const completeTodo = (todoItem: todo) => {
-    dispatch({ type: '[todo] - Complete todo', payload: todoItem });
+    dispatch({ type: '[todo] - Complete todo', payload: { ...todoItem } });
 
     saveItem('todoList', [...state.todos]);
   };
